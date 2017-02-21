@@ -1,2 +1,6 @@
 node_modules/
 .idea/
+typings/
+app/*.js
+app/*.js.map
+app/.DS_Store

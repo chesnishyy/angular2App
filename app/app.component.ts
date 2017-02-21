@@ -5,13 +5,16 @@ import {HomeComponent} from "./home.component";
 import {PostsComponent} from "./posts.component";
 import {UsersComponent} from "./users.component";
 import {UserFormComponent} from "./user-form.component";
+import {NotFoundComponent} from "./not-found.component";
 
 
 @RouteConfig([
     {path: '/', name: 'Home', component: HomeComponent, useAsDefault: true},
     {path: '/posts', name: 'Posts', component: PostsComponent },
     {path: '/users', name: 'Users', component: UsersComponent },
+    {path: '/users/:id', name: 'EditUser', component: UserFormComponent },
     {path: '/users/new', name: 'NewUser', component: UserFormComponent },
+    {path: '/not-found', name: 'NotFound', component: NotFoundComponent },
     {path: '/*other', name: 'Other', redirectTo: ['Home']}
 ])
 @Component({
@@ -26,10 +29,7 @@ import {UserFormComponent} from "./user-form.component";
 `,
     directives: [
         NavBarComponent,
-        ROUTER_DIRECTIVES,
-        HomeComponent,
-        PostsComponent,
-        UsersComponent
+        ROUTER_DIRECTIVES
     ]
 })
 export class AppComponent { }

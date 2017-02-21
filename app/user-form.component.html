@@ -1,3 +1,4 @@
+<h1>{{title}}</h1>
 <div class="row">
     <div class="col-md-6 well">
         <form [ngFormModel]="form" (ngSubmit)="save()">
@@ -9,7 +10,8 @@
                            id="name"
                            class="form-control"
                            ngControl="name"
-                           #name="ngForm">
+                           #name="ngForm"
+                           [(ngModel)]="user.name">
                     <div *ngIf="name.touched && !name.valid"
                          class="alert alert-danger">
                         Name is required.
@@ -21,7 +23,8 @@
                            id="email"
                            class="form-control"
                            ngControl="email"
-                           #email="ngForm">
+                           #email="ngForm"
+                           [(ngModel)]="user.email">
                     <div *ngIf="email.touched && email.errors"
                          class="alert alert-danger">
                       Please type a valid email.
@@ -31,7 +34,8 @@
                     <label for="phone">Phone</label>
                     <input type="text"
                            id="phone"
-                           class="form-control">
+                           class="form-control"
+                           [(ngModel)]="user.phone">
 
                 </div>
             </fieldset>
@@ -41,7 +45,8 @@
                     <label for="street">Street</label>
                     <input type="text"
                            id="street"
-                           class="form-control">
+                           class="form-control"
+                           [(ngModel)]="user.address.street">
 
 
                 </div>
@@ -49,14 +54,16 @@
                     <label for="suite">Suite</label>
                     <input type="text"
                            id="suite"
-                           class="form-control">
+                           class="form-control"
+                           [(ngModel)]="user.address.suite">
 
                 </div>
                 <div class="form-group">
                     <label for="city">City</label>
                     <input type="text"
                            id="city"
-                           class="form-control">
+                           class="form-control"
+                           [(ngModel)]="user.address.city">
 
 
                 </div>
@@ -64,15 +71,15 @@
                     <label for="zipCode">ZipCode</label>
                     <input type="text"
                            id="zipCode"
-                           class="form-control">
+                           class="form-control"
+                           [(ngModel)]="user.address.zipCode">
 
 
                 </div>
             </fieldset>
             <button type="submit"
                     class="btn btn-primary"
-                    [disabled]="!form.valid"
-                    [routerLink]="['Users']">
+                    [disabled]="!form.valid">
                 Save
             </button>
         </form>

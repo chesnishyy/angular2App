@@ -6,8 +6,9 @@ export class Address{
 }
 
 export class User{
+    id: number;
     name: string;
     email: string;
     phone: string;
-    address= new Address();
+    address = new Address();
 }

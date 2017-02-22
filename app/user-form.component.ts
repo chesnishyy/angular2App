@@ -44,11 +44,12 @@ export class UserFormComponent implements CanDeactivate, OnInit{
 
         this.title = id ? "Edit User": "New User";
 
-        if(!id) return;
+        if(!id)
+            return;
 
         this._userService.getUser(id)
             .subscribe(user => this.user = user, res => {
-                if(res.status == 400){
+                if(res.status == 404){
                     this._router.navigate(['NotFound']);
                 }
             })
@@ -61,11 +62,15 @@ export class UserFormComponent implements CanDeactivate, OnInit{
     }
 
     save(){
-       this._userService.addUser(this.form.value)
-           .subscribe(x => {
+        var result;
+        if(this.user.id)
+            result = this._userService.updateUser(this.user);
+        else
+            result = this._userService.addUser(this.form.value);
 
+        result.subscribe(x => {
                this._router.navigate(['Users'])
-           })
+           });
     }
 
 }

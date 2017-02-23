@@ -4,18 +4,22 @@ import {PostService} from "./post.service";
 
 
 @Component({
-    selector: 'posts',
     templateUrl:'app/posts.component.html',
     providers: [PostService]
 })
 export class PostsComponent implements OnInit{
     posts: any[];
+    isLoading = true;
 
     constructor(private _postService: PostService) {
     }
 
     ngOnInit(){
-        return this._postService.getPosts()
-            .subscribe(posts => this.posts = posts);
+         this._postService.getPosts()
+            .subscribe(posts => this.posts = posts,
+                null, () => {
+                    this.isLoading = false;
+                }
+            );
     }
 }

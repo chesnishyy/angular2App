@@ -1,11 +1,13 @@
 import {Component} from "angular2/core";
 import {OnInit} from "angular2/src/core/linker/interfaces";
 import {PostService} from "./post.service";
+import {SpinnerComponent} from "./spinner.component";
 
 
 @Component({
     templateUrl:'app/posts.component.html',
-    providers: [PostService]
+    providers: [PostService],
+    directives: [SpinnerComponent]
 })
 export class PostsComponent implements OnInit{
     posts: any[];
